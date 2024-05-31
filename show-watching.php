@@ -104,7 +104,7 @@ if (isset($_GET["id"]) and isset($_GET["ep"])) {
                         <h5>List Name</h5>
                     </div>
                     <?php foreach ($allEpisodes as $episodes) : ?>
-                        <a href="<?php echo APPURL; ?>show-watching.php?id=<?php echo $episodes->show_id; ?>&ep=<?php echo $episodes->id; ?>">Ep <?php echo $episodes->id; ?></a>
+                        <a href="<?php echo APPURL; ?>show-watching.php?id=<?php echo $episodes->show_id; ?>&ep=<?php echo $episodes->name; ?>">Ep <?php echo $episodes->name; ?></a>
                     <?php endforeach; ?>
 
                 </div>
