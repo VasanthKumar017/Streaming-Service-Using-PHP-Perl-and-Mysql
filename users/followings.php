@@ -1,22 +1,20 @@
-<?php require "includes/header.php"; ?>
-<?php require "config/config.php"; ?>
+<?php require "../includes/header.php"; ?>
+<?php require "../config/config.php"; ?>
 <!-- Header End -->
 <?php
-// if (isset($_GET['name'])) {
-//     $name = $_GET['name'];
+
+
+$followings = $conn->query("SELECT shows.id AS id,shows.title AS title,shows.image,shows.type AS type,shows.genre AS genre,
+    shows.num_available AS num_available,shows.num_total AS num_total,following.user_id,following.show_id FROM shows 
+    INNER JOIN following ON shows.id =following.show_id WHERE following.user_id='$_SESSION[user_id]' ");
+
+
+$followings->execute();
+
+$allFollowings = $followings->fetchAll(PDO::FETCH_OBJ);
 
 
 
-
-//     $shows = $conn->query("SELECT shows.id AS id, shows.image AS image,shows.num_available AS num_available,
-//     shows.num_total AS num_total , shows.title AS title ,shows.genre AS genre ,shows.type AS type,
-//       COUNT(views.show_id) AS COUNT_views
-//       FROM shows JOIN views ON shows.id = views.show_id  WHERE shows.genre ='$name' GROUP BY(shows.id) ORDER BY views.show_id ASC");
-
-//     $shows->execute();
-
-//     $allShows = $shows->fetchAll(PDO::FETCH_OBJ);
-// }
 ?>
 
 
@@ -27,8 +25,8 @@
             <div class="col-lg-12">
                 <div class="breadcrumb__links">
                     <a href="<?php echo APPURL; ?>index.php"><i class="fa fa-home"></i> Home</a>
-                    <a href="<?php echo APPURL; ?>./categories.php?name=<?php echo $name; ?>">Categories</a>
-                    <span><?php echo $name ?></span>
+
+                    <span>followings</span>
                 </div>
             </div>
         </div>
@@ -46,21 +44,20 @@
                         <div class="row">
                             <div class="col-lg-8 col-md-8 col-sm-6">
                                 <div class="section-title">
-                                    <h4><?php echo $name ?></h4>
+                                    <h4>followings</h4>
                                 </div>
                             </div>
 
                         </div>
                     </div>
                     <div class="row">
-                        <?php if (count($allShows) > 0) : ?>
-                            <?php foreach ($allShows as $shows) : ?>
+                        <?php if (count($allFollowings) > 0) : ?>
+                            <?php foreach ($allFollowings as $shows) : ?>
                                 <div class="col-lg-4 col-md-6 col-sm-6">
                                     <div class="product__item">
-                                        <div class="product__item__pic set-bg" data-setbg="img/shows/<?php echo $shows->image ?>">
+                                        <div class="product__item__pic set-bg" data-setbg="<?php echo APPURL; ?>img/shows/<?php echo $shows->image ?>">
                                             <div class="ep"><?php echo $shows->num_available ?>/<?php echo $shows->num_total ?></div>
                                             <div class="comment"><i class="fa fa-comments"></i> 11</div>
-                                            <div class="view"><i class="fa fa-eye"></i><?php echo $shows->COUNT_views ?></div>
                                         </div>
                                         <div class="product__item__text">
                                             <ul>
@@ -93,4 +90,4 @@
 <!-- Product Section End -->
 
 <!-- Footer Section Begin -->
-<?php require "includes/footer.php"; ?>
+<?php require "../includes/footer.php"; ?>
