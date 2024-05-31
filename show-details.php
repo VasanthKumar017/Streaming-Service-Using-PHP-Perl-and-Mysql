@@ -13,75 +13,89 @@ if (isset($_GET["id"])) {
 
 
     $singleShow = $show->fetch(PDO::FETCH_OBJ);
-}
-//for you shows 
-$forYouShows = $conn->query("SELECT shows.id AS id, shows.image AS image,shows.num_available AS num_available,
+
+    //for you shows 
+    $forYouShows = $conn->query("SELECT shows.id AS id, shows.image AS image,shows.num_available AS num_available,
  shows.num_total AS num_total , shows.title AS title ,shows.genre AS genre ,shows.type AS type,
    COUNT(views.show_id) AS COUNT_views
    FROM shows JOIN views ON shows.id = views.show_id  GROUP BY(shows.id) ORDER BY views.show_id ASC");
 
-$forYouShows->execute();
-$allForYouShows = $forYouShows->fetchAll(PDO::FETCH_OBJ);
+    $forYouShows->execute();
+    $allForYouShows = $forYouShows->fetchAll(PDO::FETCH_OBJ);
 
-//comment
-$comments = $conn->query("SELECT * FROM comments WHERE show_id='$id'");
-$comments->execute();
+    //comment
+    $comments = $conn->query("SELECT * FROM comments WHERE show_id='$id'");
+    $comments->execute();
 
-$allComments = $comments->fetchALL(PDO::FETCH_OBJ);
+    $allComments = $comments->fetchALL(PDO::FETCH_OBJ);
 
-//Following
-if (isset($_POST["submit"])) {
+    //Following
+    if (isset($_POST["submit"])) {
 
-    $show_id = $_POST['show_id'];
-    $user_id = $_POST['user_id'];
-
-    $follow = $conn->prepare("INSERT INTO following (show_id, user_id) VALUES (:show_id, :user_id)");
-
-    $follow->execute([
-        ":show_id" => $show_id,
-        ":user_id" => $user_id,
-
-    ]);
-    echo "<script>alert('You followed the show');</script>";
-
-    // header("Location:" . APPURL . "/show-details.php?id=" . $id . "");
-    // exit();
-}
-
-//checking for following
-$checfollowing = $conn->query("SELECT * FROM following WHERE show_id='$id' AND user_id='$_SESSION[user_id]'");
-$checfollowing->execute();
-
-             
-
-                  //inserting comments
-if (isset($_POST["inserting_comment"])) {
-
-
-    if (empty($_POST["comment"])) {
-        echo "<script>alert('One or more fields is empty');</script>";
-    } else {
-        $comment = $_POST['comment'];
         $show_id = $_POST['show_id'];
-        $user_id = $_SESSION['user_id'];
-        $user_name = $_SESSION['username'];
+        $user_id = $_POST['user_id'];
 
+        $follow = $conn->prepare("INSERT INTO following (show_id, user_id) VALUES (:show_id, :user_id)");
 
-
-        $insert = $conn->prepare("INSERT INTO comments (comment, show_id, user_id, user_name) VALUES (:comment, :show_id, :user_id, :user_name)");
-
-        $insert->execute([
-            ":comment" => $comment,
+        $follow->execute([
             ":show_id" => $show_id,
             ":user_id" => $user_id,
-            ":user_name" => $user_name,
 
         ]);
+        echo "<script>alert('You followed the show');</script>";
 
-        echo "<script>alert('Comment added');</script>";
+        // header("Location:" . APPURL . "/show-details.php?id=" . $id . "");
+        // exit();
+    }
+
+    //checking for following
+    $checfollowing = $conn->query("SELECT * FROM following WHERE show_id='$id' AND user_id='$_SESSION[user_id]'");
+    $checfollowing->execute();
+
+
+
+    //inserting comments
+    if (isset($_POST["inserting_comment"])) {
+
+
+        if (empty($_POST["comment"])) {
+            echo "<script>alert('One or more fields is empty');</script>";
+        } else {
+            $comment = $_POST['comment'];
+            $show_id = $_POST['show_id'];
+            $user_id = $_SESSION['user_id'];
+            $user_name = $_SESSION['username'];
+
+
+
+            $insert = $conn->prepare("INSERT INTO comments (comment, show_id, user_id, user_name) VALUES (:comment, :show_id, :user_id, :user_name)");
+
+            $insert->execute([
+                ":comment" => $comment,
+                ":show_id" => $show_id,
+                ":user_id" => $user_id,
+                ":user_name" => $user_name,
+
+            ]);
+
+            echo "<script>alert('Comment added');</script>";
+        }
     }
 }
 
+// //Checking if user viewed or not
+// $checkView = $conn->query("SELECT * FROM views WHERE show_id='$id' AND user_id='$_SESSION[user_id]'");
+// $checkView->execute();
+
+// if ($checkView->rowCount() == 0) {
+
+//     $insertView = $conn->prepare("INSERT INTO views (show_id, user_id) VALUES (:show_id, :user_id)");
+//     $insertView->execute([
+//         ":show_id" => $id,
+//         ":user_id" => $_SESSION['user_id'],
+//     ]);
+//     //$checkView = $checkView -> fetch(PDO::FETCH_OBJ);
+// }
 
 
 ?>
