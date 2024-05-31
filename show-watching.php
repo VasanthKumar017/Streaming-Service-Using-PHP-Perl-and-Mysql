@@ -145,6 +145,4 @@ if (isset($_GET["id"]) and isset($_GET["ep"])) {
 <!-- Anime Section End -->
 
 <!-- Footer Section Begin -->
-
-
 <?php require "includes/footer.php" ?>
