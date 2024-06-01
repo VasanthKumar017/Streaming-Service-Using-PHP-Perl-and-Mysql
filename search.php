@@ -6,7 +6,7 @@
 
 if (isset($_POST['submit'])) {
     if (empty($_POST['keyword'])) {
-        echo "<script>alert('search is empty');</script>";
+        echo "<script>location.href='" . APPURL . "'</script>";
     } else {
 
         $keyword = $_POST['keyword'];
