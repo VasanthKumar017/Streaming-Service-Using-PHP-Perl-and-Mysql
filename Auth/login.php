@@ -35,7 +35,7 @@ if (isset($_POST["submit"])) {
                 $_SESSION['username'] = $fetch['username'];
                 $_SESSION['email'] = $fetch['email'];
                 $_SESSION['user_id'] = $fetch['id'];
-                header("location:" . APPURL . "");
+                echo "<script>location.href='" . APPURL . "'</script>";
 
                 //start session
                 echo "<script>alert('logged In')</script>";

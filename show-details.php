@@ -61,26 +61,30 @@ if (isset($_GET["id"])) {
         if (empty($_POST["comment"])) {
             echo "<script>alert('One or more fields is empty');</script>";
         } else {
-            $comment = $_POST['comment'];
-            $show_id = $_POST['show_id'];
-            $user_id = $_SESSION['user_id'];
-            $user_name = $_SESSION['username'];
+            if (isset($_SESSION['user_id'])) {
+                $comment = $_POST['comment'];
+                $show_id = $_POST['show_id'];
+                $user_id = $_SESSION['user_id'];
+                $user_name = $_SESSION['username'];
 
 
 
-            $insert = $conn->prepare("INSERT INTO comments (comment, show_id, user_id, user_name) VALUES (:comment, :show_id, :user_id, :user_name)");
+                $insert = $conn->prepare("INSERT INTO comments (comment, show_id, user_id, user_name) VALUES (:comment, :show_id, :user_id, :user_name)");
 
-            $insert->execute([
-                ":comment" => $comment,
-                ":show_id" => $show_id,
-                ":user_id" => $user_id,
-                ":user_name" => $user_name,
+                $insert->execute([
+                    ":comment" => $comment,
+                    ":show_id" => $show_id,
+                    ":user_id" => $user_id,
+                    ":user_name" => $user_name,
 
-            ]);
+                ]);
 
-            echo "<script>alert('Comment added');</script>";
+                echo "<script>alert('Comment added');</script>";
+            }
         }
     }
+} else {
+    echo ("<script>location.href='" . APPURL . "/404.php'</script>");
 }
 
 // //Checking if user viewed or not

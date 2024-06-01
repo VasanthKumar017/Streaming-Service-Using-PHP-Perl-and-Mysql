@@ -4,6 +4,10 @@
 <?php
 
 
+if (!isset($_SESSION["user_id"])) {
+    echo "<script>location.href='" . APPURL . "'</script>";
+}
+
 $followings = $conn->query("SELECT shows.id AS id,shows.title AS title,shows.image,shows.type AS type,shows.genre AS genre,
     shows.num_available AS num_available,shows.num_total AS num_total,following.user_id,following.show_id FROM shows 
     INNER JOIN following ON shows.id =following.show_id WHERE following.user_id='$_SESSION[user_id]' ");
