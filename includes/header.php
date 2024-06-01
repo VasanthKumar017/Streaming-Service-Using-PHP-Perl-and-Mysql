@@ -79,6 +79,8 @@ $allCategories = $categories->fetchAll(PDO::FETCH_OBJ);
                                         </ul>
                                     </li>
                                 <?php endif; ?>
+
+
                             </ul>
                         </nav>
                     </div>
@@ -86,12 +88,19 @@ $allCategories = $categories->fetchAll(PDO::FETCH_OBJ);
                 <div class="col-lg-2">
                     <div class="header__right">
 
+
+                        <form action="<?php echo APPURL ;?>search.php" method="POST" class="form-inline my-2 my-lg-0">
+                            <input name="keyword" style="margin-left:-150px;" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                            <button name="submit" type="submit" class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                        </form>
+
+
                         <?php if (!isset($_SESSION["username"])) : ?>
 
                             <a href="<?php echo APPURL; ?>auth/login.php"><span class="icon_profile"></span></a>
 
                         <?php endif; ?>
-                        <a href="#" class="search-switch"><span class="icon_search"></span></a>
+
                     </div>
                 </div>
             </div>
