@@ -1,6 +1,17 @@
 <?php require "../layouts/header.php" ?>
 <?php require "../../config/config.php" ?>
+<?php
 
+if (!isset($_SESSION["adminname"])) {
+  header("location:" . ADMINURL . "admins/login-admins.php");
+}
+
+$shows = $conn->query("SELECT * FROM shows");
+$shows->execute();
+
+$allShows = $shows->fetchAll(PDO::FETCH_OBJ);
+
+?>
 <div class="row">
   <div class="col">
     <div class="card">
@@ -25,45 +36,22 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>Nartuo</td>
-              <td>image.jpg</td>
-              <td>tv series </td>
-              <td>11/2/2023</td>
-              <td>Airing</td>
-              <td>Magic</td>
-              <td>11</td>
-              <td>15</td>
-              <td>2023-04-09 15:13:17</td>
-              <td><a href="delete-shows.html" class="btn btn-danger  text-center ">delete</a></td>
-            </tr>
-            <tr>
-              <th scope="row">1</th>
-              <td>Nartuo</td>
-              <td>image.jpg</td>
-              <td>tv series </td>
-              <td>11/2/2023</td>
-              <td>Airing</td>
-              <td>Magic</td>
-              <td>11</td>
-              <td>15</td>
-              <td>2023-04-09 15:13:17</td>
-              <td><a href="delete-shows.html" class="btn btn-danger  text-center ">delete</a></td>
-            </tr>
-            <tr>
-              <th scope="row">1</th>
-              <td>Nartuo</td>
-              <td>image.jpg</td>
-              <td>tv series </td>
-              <td>11/2/2023</td>
-              <td>Airing</td>
-              <td>Magic</td>
-              <td>11</td>
-              <td>15</td>
-              <td>2023-04-09 15:13:17</td>
-              <td><a href="delete-shows.html" class="btn btn-danger  text-center ">delete</a></td>
-            </tr>
+            <?php foreach ($allShows as $shows) : ?>
+              <tr>
+                <th scope="row"><?php echo $shows->id; ?></th>
+                <td><?php echo $shows->title; ?></td>
+                <td><?php echo $shows->image; ?></td>
+                <td><?php echo $shows->type; ?></td>
+                <td><?php echo $shows->date_aired; ?></td>
+                <td><?php echo $shows->status; ?></td>
+                <td><?php echo $shows->genre ?></td>
+                <!-- <td>11</td>
+              <td>15</td> -->
+                <td><?php echo $shows->created_at ?></td>
+                <td><a href="<?php echo ADMINURL; ?>shows-admins/delete-shows.php" class="btn btn-danger  text-center ">delete</a></td>
+              </tr>
+            <?php endforeach; ?>
+
           </tbody>
         </table>
       </div>
