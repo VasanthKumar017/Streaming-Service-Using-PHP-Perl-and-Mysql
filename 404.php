@@ -38,7 +38,7 @@
                         </div>
                     </div>
                     <div class="row">
-                          404 NOT FOUND
+                        <p class="text-white">404 NOT FOUND</p>  
                     </div>
                 </div>
 

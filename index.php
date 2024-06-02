@@ -70,7 +70,7 @@ $allForYouShows = $forYouShows->fetchAll(PDO::FETCH_OBJ);
                                 <div class="label"><?php echo $show->genre; ?></div>
                                 <h2><?php echo $show->title; ?></h2>
                                 <p><?php echo $show->description; ?></p>
-                                <a href="anime-watching.php?id<?php echo $show->id; ?>"><span>Watch Now</span> <i class="fa fa-angle-right"></i></a>
+                                <a href="<?php echo APPURL; ?>show-watching.php?id=<?php echo $show->id; ?>&ep=1"><span>Watch Now</span> <i class="fa fa-angle-right"></i></a>
                             </div>
                         </div>
                     </div>

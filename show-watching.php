@@ -62,6 +62,8 @@ if (isset($_GET["id"]) and isset($_GET["ep"])) {
             echo "<script>alert('Comment added');</script>";
         }
     }
+} else {
+    echo ("<script>location.href='" . APPURL . "/404.php'</script>");
 }
 
 
@@ -77,8 +79,9 @@ if (isset($_GET["id"]) and isset($_GET["ep"])) {
             <div class="col-lg-12">
                 <div class="breadcrumb__links">
                     <a href="<?php echo APPURL; ?>"><i class="fa fa-home"></i> Home</a>
-                    <a href="<?php echo APPURL; ?>categories.php?name=<?php echo $singleShow->genre; ?>">Categories</a>
-                    <a href="#"><?php echo $singleShow->genre; ?></a>
+                    <a href="#">Categories</a>
+                    <a href="<?php echo APPURL; ?>categories.php?name=<?php echo $singleShow->genre; ?>"><?php echo $singleShow->genre; ?></a>
+                    <a href="#"><?php echo $singleShow->title; ?></a>
                     <span>EP <?php echo $singleEpisode->name; ?></span>
                 </div>
             </div>
