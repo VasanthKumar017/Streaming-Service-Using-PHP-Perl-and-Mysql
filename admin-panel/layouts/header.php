@@ -1,3 +1,10 @@
+<?php
+session_start();
+
+define("ADMINURL", "http://localhost/tokyo/admin-panel/");
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,43 +29,49 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarText">
-          <ul class="navbar-nav side-nav">
-            <li class="nav-item">
-              <a class="nav-link" style="margin-left: 20px;" href="index.html">Home
-                <span class="sr-only">(current)</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="admins/admins.html" style="margin-left: 20px;">Admins</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="shows-admins/show-shows.html" style="margin-left: 20px;">Shows</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="genres-admins/show-genres.html" style="margin-left: 20px;">Genres</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="episodes-admins/show-episodes.html" style="margin-left: 20px;">Episodes</a>
-            </li>
-          </ul>
+          <?php if (isset($_SESSION["adminname"])) : ?>
+            <ul class="navbar-nav side-nav">
+              <li class="nav-item">
+                <a class="nav-link" style="margin-left: 20px;" href="index.php">Home
+                  <span class="sr-only">(current)</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="admins/admins.html" style="margin-left: 20px;">Admins</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="shows-admins/show-shows.html" style="margin-left: 20px;">Shows</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="genres-admins/show-genres.html" style="margin-left: 20px;">Genres</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="episodes-admins/show-episodes.html" style="margin-left: 20px;">Episodes</a>
+              </li>
+            </ul>
+          <?php endif; ?>
           <ul class="navbar-nav ml-md-auto d-md-flex">
-            <li class="nav-item">
-              <a class="nav-link" href="index.php">Home
-                <span class="sr-only">(current)</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="admins/login-admins.php">login
-              </a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link  dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                username
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Logout</a>
+            <?php if (!isset($_SESSION["adminname"])) : ?>
+              <li class="nav-item">
+                <a class="nav-link" href="admins/login-admins.php">login
+                </a>
+              </li>
+            <?php else : ?>
+              <li class="nav-item">
+                <a class="nav-link" href="index.php">Home
+                  <span class="sr-only">(current)</span>
+                </a>
+              </li>
 
-            </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link  dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <?php echo $_SESSION['adminname'] ?>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="<?php echo ADMINURL ?>admins/logout.php">Logout</a>
+
+              </li>
+            <?php endif; ?>
 
 
           </ul>

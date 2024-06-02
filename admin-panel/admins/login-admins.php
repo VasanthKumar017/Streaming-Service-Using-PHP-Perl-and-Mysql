@@ -3,10 +3,11 @@
 <?php
 
 
-
-// if (isset($_SESSION["username"])) {
-//     header("location:" . APPURL . "");
-// }
+//to not access the login page
+if (isset($_SESSION["adminname"])) {
+  header("location:" . ADMINURL . "");
+}
+//to not access the login page
 
 if (isset($_POST["submit"])) {
   if (empty($_POST["email"]) || empty($_POST["password"])) {
@@ -31,13 +32,13 @@ if (isset($_POST["submit"])) {
       //check for the password
       if (password_verify($password, $fetch["password"])) {
 
-        // $_SESSION['username'] = $fetch['username'];
-        // $_SESSION['email'] = $fetch['email'];
-        // $_SESSION['user_id'] = $fetch['id'];
-        //echo "<script>location.href='" . APPURL . "'</script>";
+        $_SESSION['adminname'] = $fetch['adminname'];
+        $_SESSION['email'] = $fetch['email'];
+        $_SESSION['admin_id'] = $fetch['id'];
+        echo "<script>location.href='" . ADMINURL . "'</script>";
 
         //start session
-        echo "<script>alert('logged In')</script>";
+        // echo "<script>alert('logged In')</script>";
         // header("Location:" . APPURL . "");
       } else {
         echo "<script>alert('email or password is incorrect')</script>";
