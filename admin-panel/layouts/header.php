@@ -23,7 +23,7 @@ define("ADMINURL", "http://localhost/tokyo/admin-panel/");
   <div id="wrapper">
     <nav class="navbar header-top fixed-top navbar-expand-lg  navbar-dark bg-dark">
       <div class="container">
-        <a class="navbar-brand" href="#">LOGO</a>
+        <a class="navbar-brand" href="<?php echo ADMINURL; ?>index.php">LOGO</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -32,33 +32,33 @@ define("ADMINURL", "http://localhost/tokyo/admin-panel/");
           <?php if (isset($_SESSION["adminname"])) : ?>
             <ul class="navbar-nav side-nav">
               <li class="nav-item">
-                <a class="nav-link" style="margin-left: 20px;" href="index.php">Home
+                <a class="nav-link" style="margin-left: 20px;" href="<?php echo ADMINURL; ?>index.php">Home
                   <span class="sr-only">(current)</span>
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="admins/admins.php" style="margin-left: 20px;">Admins</a>
+                <a class="nav-link" href="<?php echo ADMINURL; ?>admins/admins.php" style="margin-left: 20px;">Admins</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="shows-admins/show-shows.html" style="margin-left: 20px;">Shows</a>
+                <a class="nav-link" href="<?php echo ADMINURL; ?>shows-admins/show-shows.php" style="margin-left: 20px;">Shows</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="genres-admins/show-genres.html" style="margin-left: 20px;">Genres</a>
+                <a class="nav-link" href="<?php echo ADMINURL; ?>genres-admins/show-genres.php" style="margin-left: 20px;">Genres</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="episodes-admins/show-episodes.html" style="margin-left: 20px;">Episodes</a>
+                <a class="nav-link" href="<?php echo ADMINURL; ?>episodes-admins/show-episodes.php" style="margin-left: 20px;">Episodes</a>
               </li>
             </ul>
           <?php endif; ?>
           <ul class="navbar-nav ml-md-auto d-md-flex">
             <?php if (!isset($_SESSION["adminname"])) : ?>
               <li class="nav-item">
-                <a class="nav-link" href="admins/login-admins.php">login
+                <a class="nav-link" href="<?php echo ADMINURL; ?>admins/login-admins.php">login
                 </a>
               </li>
             <?php else : ?>
               <li class="nav-item">
-                <a class="nav-link" href="index.php">Home
+                <a class="nav-link" href="<?php echo ADMINURL; ?>index.php">Home
                   <span class="sr-only">(current)</span>
                 </a>
               </li>
