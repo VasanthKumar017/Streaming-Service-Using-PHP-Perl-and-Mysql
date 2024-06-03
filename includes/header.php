@@ -2,6 +2,8 @@
 
 session_start();
 define("APPURL", "http://localhost/tokyo/");
+define("IMGURL", "http://localhost/tokyo/admin-panel/shows-admins/img/");
+define("VIDURL", "http://localhost/tokyo/admin-panel/episodes-admins/videos/");
 
 require dirname(dirname(__FILE__)) . "/config/config.php";
 

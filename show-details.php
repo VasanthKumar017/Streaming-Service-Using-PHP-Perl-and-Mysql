@@ -126,7 +126,7 @@ if (isset($_GET["id"])) {
         <div class="anime__details__content">
             <div class="row">
                 <div class="col-lg-3">
-                    <div class="anime__details__pic set-bg" data-setbg="img/shows/<?php echo $singleShow->image; ?>">
+                    <div class="anime__details__pic set-bg" data-setbg="<?php echo IMGURL; ?>/<?php echo $singleShow->image; ?>">
                         <div class=" view"><i class="fa fa-eye"></i><?php echo $singleShow->COUNT_views; ?></div>
                     </div>
                 </div>
@@ -212,7 +212,7 @@ if (isset($_GET["id"])) {
                         <h5>you might like...</h5>
                     </div>
                     <?php foreach ($allForYouShows as $forYouShows) : ?>
-                        <div class="product__sidebar__view__item set-bg" data-setbg="img/shows/<?php echo $forYouShows->image; ?>">
+                        <div class="product__sidebar__view__item set-bg" data-setbg="<?php echo IMGURL; ?><?php echo $forYouShows->image; ?>">
                             <div class="ep"><?php echo $forYouShows->num_available; ?>/<?php echo $forYouShows->num_total; ?></div>
                             <div class="view"><i class="fa fa-eye"></i><?php echo $forYouShows->COUNT_views; ?></div>
                             <h5><a href="<?php echo APPURL; ?>show-details.php?id=<?php echo $forYouShows->id ?>"><?php echo $forYouShows->title ?></a></h5>

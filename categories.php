@@ -60,7 +60,7 @@ if (isset($_GET['name'])) {
                             <?php foreach ($allShows as $shows) : ?>
                                 <div class="col-lg-4 col-md-6 col-sm-6">
                                     <div class="product__item">
-                                        <div class="product__item__pic set-bg" data-setbg="img/shows/<?php echo $shows->image ?>">
+                                        <div class="product__item__pic set-bg" data-setbg="<?php echo IMGURL; ?><?php echo $shows->image ?>">
                                             <div class="ep"><?php echo $shows->num_available ?>/<?php echo $shows->num_total ?></div>
                                             <div class="comment"><i class="fa fa-comments"></i> 11</div>
                                             <div class="view"><i class="fa fa-eye"></i><?php echo $shows->COUNT_views ?></div>

@@ -63,7 +63,7 @@ $allForYouShows = $forYouShows->fetchAll(PDO::FETCH_OBJ);
     <div class="container">
         <div class="hero__slider owl-carousel">
             <?php foreach ($allShows as $show) : ?>
-                <div class="hero__items set-bg" data-setbg="img/shows/<?php echo $show->image; ?>">
+                <div class="hero__items set-bg" data-setbg="<?php echo IMGURL; ?><?php echo $show->image; ?>">
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="hero__text">
@@ -106,7 +106,7 @@ $allForYouShows = $forYouShows->fetchAll(PDO::FETCH_OBJ);
                         <?php foreach ($allTrendingShows as $trendingShows) : ?>
                             <div class="col-lg-4 col-md-6 col-sm-6">
                                 <div class="product__item">
-                                    <div class="product__item__pic set-bg" data-setbg="img/shows/<?php echo $trendingShows->image; ?>">
+                                    <div class="product__item__pic set-bg" data-setbg="<?php echo IMGURL; ?><?php echo $trendingShows->image; ?>">
                                         <div class="ep"><?php echo $trendingShows->num_available; ?>/ <?php echo $trendingShows->num_total; ?></div>
                                         <div class="comment"><i class="fa fa-comments"></i> 11</div>
                                         <div class="view"><i class="fa fa-eye"></i> <?php echo $trendingShows->COUNT_views; ?></div>
@@ -143,7 +143,7 @@ $allForYouShows = $forYouShows->fetchAll(PDO::FETCH_OBJ);
                         <?php foreach ($allAdventureShows as $adventureShows) : ?>
                             <div class="col-lg-4 col-md-6 col-sm-6">
                                 <div class="product__item">
-                                    <div class="product__item__pic set-bg" data-setbg="img/shows/<?php echo $adventureShows->image; ?>">
+                                    <div class="product__item__pic set-bg" data-setbg="<?php echo IMGURL; ?><?php echo $adventureShows->image; ?>">
                                         <div class="ep"><?php echo $adventureShows->num_available; ?> / <?php echo $adventureShows->num_total; ?></div>
                                         <div class="comment"><i class="fa fa-comments"></i> 11</div>
                                         <div class="view"><i class="fa fa-eye"></i> <?php echo $adventureShows->COUNT_views; ?></div>
@@ -184,7 +184,7 @@ $allForYouShows = $forYouShows->fetchAll(PDO::FETCH_OBJ);
 
                             <div class="col-lg-4 col-md-6 col-sm-6">
                                 <div class="product__item">
-                                    <div class="product__item__pic set-bg" data-setbg="img/shows/<?php echo $recentlyAddedShows->image; ?>">
+                                    <div class="product__item__pic set-bg" data-setbg="<?php echo IMGURL; ?><?php echo $recentlyAddedShows->image; ?>">
                                         <div class="ep"><?php echo $recentlyAddedShows->num_available; ?>/ <?php echo $recentlyAddedShows->num_total; ?></div>
                                         <div class="comment"><i class="fa fa-comments"></i> 11</div>
                                         <div class="view"><i class="fa fa-eye"></i><?php echo $recentlyAddedShows->COUNT_views; ?></div>
@@ -243,7 +243,7 @@ $allForYouShows = $forYouShows->fetchAll(PDO::FETCH_OBJ);
                         <?php foreach ($allActionShows as $actionShows) : ?>
                             <div class="col-lg-4 col-md-6 col-sm-6">
                                 <div class="product__item">
-                                    <div class="product__item__pic set-bg" data-setbg="img/shows/<?php echo $actionShows->image ?>">
+                                    <div class="product__item__pic set-bg" data-setbg="<?php echo IMGURL; ?><?php echo $actionShows->image ?>">
                                         <div class="ep"><?php echo $actionShows->num_available ?>/<?php echo $actionShows->num_total ?></div>
                                         <div class="comment"><i class="fa fa-comments"></i> 11</div>
                                         <div class="view"><i class="fa fa-eye"></i><?php echo $actionShows->COUNT_views ?></div>
@@ -276,7 +276,7 @@ $allForYouShows = $forYouShows->fetchAll(PDO::FETCH_OBJ);
                     <?php foreach ($allForYouShows as $forYouShows) : ?>
                         <div class="product__sidebar__comment__item">
                             <div class="product__sidebar__comment__item__pic">
-                                <img style="width: 150px;height:200px;" src="img/shows/<?php echo $forYouShows->image ?>" alt="">
+                                <img style="width: 150px;height:200px;" src="<?php echo IMGURL; ?>/<?php echo $forYouShows->image ?>" alt="">
                             </div>
                             <div class="product__sidebar__comment__item__text">
                                 <ul>
