@@ -6,7 +6,6 @@ if (!isset($_SESSION["adminname"])) {
 }
 
 
-
 if (isset($_POST["submit"])) {
   if (
     empty($_POST["title"])            || empty($_POST["description"]) || empty($_POST["type"])
