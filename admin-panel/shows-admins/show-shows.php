@@ -40,7 +40,7 @@ $allShows = $shows->fetchAll(PDO::FETCH_OBJ);
               <tr>
                 <th scope="row"><?php echo $shows->id; ?></th>
                 <td><?php echo $shows->title; ?></td>
-                <td><?php echo $shows->image; ?></td>
+                <td><img style="width:70px;height:70px;" src="img/<?php echo $shows->image; ?>"></td>
                 <td><?php echo $shows->type; ?></td>
                 <td><?php echo $shows->date_aired; ?></td>
                 <td><?php echo $shows->status; ?></td>
