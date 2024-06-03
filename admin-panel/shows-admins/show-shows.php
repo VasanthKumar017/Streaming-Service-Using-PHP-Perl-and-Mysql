@@ -48,7 +48,7 @@ $allShows = $shows->fetchAll(PDO::FETCH_OBJ);
                 <!-- <td>11</td>
               <td>15</td> -->
                 <td><?php echo $shows->created_at ?></td>
-                <td><a href="<?php echo ADMINURL; ?>shows-admins/delete-shows.php" class="btn btn-danger  text-center ">delete</a></td>
+                <td><a href="delete-shows.php?id=<?php echo $shows->id; ?>" class="btn btn-danger  text-center ">delete</a></td>
               </tr>
             <?php endforeach; ?>
 
