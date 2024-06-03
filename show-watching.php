@@ -96,7 +96,7 @@ if (isset($_GET["id"]) and isset($_GET["ep"])) {
         <div class="row">
             <div class="col-lg-12">
                 <div class="anime__video__player">
-                    <video id="player" playsinline controls data-poster="<?php echo APPURL; ?>shows/<?php echo $singleEpisode->thumbnail; ?>">
+                    <video id="player" playsinline controls data-poster="<?php echo APPURL; ?>img/shows/<?php echo $singleEpisode->thumbnail; ?>">
                         <source src="<?php echo APPURL; ?>videos/<?php echo $singleEpisode->video; ?>" type="video/mp4" />
                         <!-- Captions are optional -->
                         <!-- <track kind="captions" label="English captions" src="#" srclang="en" default /> -->

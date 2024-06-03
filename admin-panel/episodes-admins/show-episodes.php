@@ -1,5 +1,20 @@
 <?php require "../layouts/header.php" ?>
 <?php require "../../config/config.php" ?>
+<?php
+
+
+if (!isset($_SESSION["adminname"])) {
+  header("location:" . ADMINURL . "admins/login-admins.php");
+}
+
+$episodes = $conn->query("SELECT * FROM episodes");
+$episodes->execute();
+
+$allEpisodes = $episodes->fetchAll(PDO::FETCH_OBJ);
+
+
+
+?>
 
 <div class="row">
   <div class="col">
@@ -15,35 +30,22 @@
               <th scope="col">video</th>
               <th scope="col">thumbnail</th>
               <th scope="col">name</th>
+              <th scope="col">show_id</th>
 
               <th scope="col">delete</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>vid.mp4</td>
-              <td>thumbnail.jpg</td>
-              <td>ep 1</td>
-
-              <td><a href="delete-episodes.html" class="btn btn-danger  text-center ">delete</a></td>
-            </tr>
-            <tr>
-              <th scope="row">1</th>
-              <td>vid.mp4</td>
-              <td>thumbnail.jpg</td>
-              <td>ep 1</td>
-
-              <td><a href="delete-episodes.html" class="btn btn-danger  text-center ">delete</a></td>
-            </tr>
-            <tr>
-              <th scope="row">1</th>
-              <td>vid.mp4</td>
-              <td>thumbnail.jpg</td>
-              <td>ep 1</td>
-
-              <td><a href="delete-episodes.html" class="btn btn-danger  text-center ">delete</a></td>
-            </tr>
+            <?php foreach ($allEpisodes as $episodes) : ?>
+              <tr>
+                <th scope="row"><?php echo $episodes->id ?></th>
+                <td><?php echo $episodes->video ?></td>
+                <td><img style="width:70px;height:70px;" src="videos/<?php echo $episodes->thumbnail ?>"></td>
+                <td>ep <?php echo $episodes->name ?></td>
+                <td><?php echo $episodes->show_id ?></td>
+                <td><a href="delete-episodes.php?id=<?php echo $episodes->id ?>" class="btn btn-danger  text-center ">delete</a></td>
+              </tr>
+            <?php endforeach; ?>
           </tbody>
         </table>
       </div>
