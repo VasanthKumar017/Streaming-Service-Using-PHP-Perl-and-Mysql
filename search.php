@@ -10,7 +10,7 @@ if (isset($_POST['submit'])) {
     } else {
 
         $keyword = $_POST['keyword'];
-        $search = $conn->query("SELECT * FROM shows WHERE title OR genre LIKE  '%$keyword%'");
+        $search = $conn->query("SELECT * FROM shows WHERE title LIKE '%$keyword%' OR genre LIKE '%$keyword%';");
         $search->execute();
 
         $allSearches = $search->fetchAll(PDO::FETCH_OBJ);
