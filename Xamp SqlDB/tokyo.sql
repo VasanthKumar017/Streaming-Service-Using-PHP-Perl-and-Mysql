@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 02, 2024 at 05:27 PM
+-- Generation Time: Jun 10, 2024 at 06:32 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -104,7 +104,9 @@ INSERT INTO `comments` (`id`, `comment`, `show_id`, `user_id`, `user_name`, `cre
 (16, 'hiiiiiii', 1, 3, 'user.3', '2024-06-01 08:58:32'),
 (17, 'hiiiiiii', 1, 3, 'user.3', '2024-06-01 08:58:38'),
 (18, 'poda', 3, 3, 'user.3', '2024-06-01 10:59:57'),
-(19, 'poda', 3, 3, 'user.3', '2024-06-01 11:00:01');
+(19, 'poda', 3, 3, 'user.3', '2024-06-01 11:00:01'),
+(20, 'hello', 1, 1, 'Vasanth', '2024-06-04 04:13:44'),
+(21, 'hello', 1, 1, 'Vasanth', '2024-06-04 04:13:49');
 
 -- --------------------------------------------------------
 
@@ -128,7 +130,8 @@ CREATE TABLE `episodes` (
 INSERT INTO `episodes` (`id`, `video`, `show_id`, `name`, `created_at`, `thumbnail`) VALUES
 (1, '1.mp4', 3, '1', '2024-05-30 07:21:00', 'scavengersReignThumb.jpg'),
 (2, '2.mp4', 3, '2', '2024-05-30 07:21:00', 'scavengersReignThumb.jpg'),
-(3, '3.mp4', 1, '1', '2024-05-30 07:21:00', 'scavengersReignThumb.jpg');
+(4, 'The Boys.mp4', 2, '1', '2024-06-03 09:12:27', 'theboysthumbnail.jpeg'),
+(5, 'The Boys.mp4', 2, '2', '2024-06-03 09:59:47', 'theboysthumbnail.jpeg');
 
 -- --------------------------------------------------------
 
@@ -149,10 +152,8 @@ CREATE TABLE `following` (
 
 INSERT INTO `following` (`id`, `show_id`, `user_id`, `created_at`) VALUES
 (1, 2, 8, '2024-05-29 12:30:36'),
-(3, 3, 11, '2024-05-31 08:59:27'),
-(4, 1, 11, '2024-05-31 11:42:22'),
-(5, 2, 11, '2024-05-31 11:42:40'),
-(6, 1, 3, '2024-05-31 13:55:12');
+(6, 1, 3, '2024-05-31 13:55:12'),
+(7, 2, 1, '2024-06-04 04:14:08');
 
 -- --------------------------------------------------------
 
@@ -174,7 +175,7 @@ INSERT INTO `genres` (`id`, `name`, `created_at`) VALUES
 (1, 'Action', '2024-05-27 10:44:20'),
 (2, 'Adventure', '2024-05-27 10:44:20'),
 (3, 'fantacy', '2024-05-27 10:45:35'),
-(4, 'Magic', '2024-05-27 10:45:35');
+(5, 'Thriller', '2024-06-03 08:17:48');
 
 -- --------------------------------------------------------
 
@@ -206,7 +207,8 @@ CREATE TABLE `shows` (
 INSERT INTO `shows` (`id`, `title`, `image`, `description`, `type`, `studios`, `date_aired`, `status`, `genre`, `duration`, `quality`, `num_available`, `num_total`, `created_at`) VALUES
 (1, 'Cyberpunk: Edgerunners', 'CyberpunkEdgerunners.jpg', 'In a dystopia riddled with corruption and cybernetic implants, a talented but reckless street kid strives to become a mercenary outlaw — an edgerunner.', 'TV Series', 'Trigger', 'September 13, 2022', 'completed', 'Action', '26 minutes', 'HD', 9, 12, '2024-05-26 11:04:12'),
 (2, 'The Boys', 'theboys.jpg', 'A group of vigilantes set out to take down corrupt superheroes who abuse their superpowers.', 'TV Series', 'PrimeStudios', 'July 26, 2019', 'Ongoing', 'Action', '	55–68 minutes', 'HD', 39, 48, '2024-05-26 11:04:12'),
-(3, 'Scavengers Reign', 'ScavengersReign.jpg', 'The crew of a damaged deep space freighter strands on a beautiful but dangerous planet.', 'TV Series', 'max', 'October 19 2023', 'completed', 'Adventure', '24m', 'HD', 12, 12, '2024-05-27 03:19:49');
+(3, 'Scavengers Reign', 'ScavengersReign.jpg', 'The crew of a damaged deep space freighter strands on a beautiful but dangerous planet.', 'TV Series', 'max', 'October 19 2023', 'completed', 'Adventure', '24m', 'HD', 12, 12, '2024-05-27 03:19:49'),
+(5, 'Monster', 'Monster.jpg', 'Tenma, a brilliant neurosurgeon with a promising future, risks his career to save the life of a critically wounded young boy. The boy, now a charismatic young man, reappears 9 years later in the midst of a string of unusual serial murders.', 'Tv Series', ' Madhouse', ' 7 April 2004', 'completed', 'Action', '24 min', 'HD', 74, 74, '2024-06-03 05:25:54');
 
 -- --------------------------------------------------------
 
@@ -252,7 +254,13 @@ CREATE TABLE `views` (
 INSERT INTO `views` (`id`, `user_id`, `show_id`, `created_at`) VALUES
 (1, 1, 1, '2024-05-26 12:04:27'),
 (3, 1, 2, '2024-05-26 12:04:27'),
-(13, 1, 3, '2024-05-27 03:21:18');
+(13, 1, 3, '2024-05-27 03:21:18'),
+(14, 1, 5, '2024-05-27 03:21:18'),
+(15, 11, 5, '2024-06-04 04:23:03'),
+(16, 11, 1, '2024-06-04 04:23:13'),
+(17, 11, 2, '2024-06-04 04:23:37'),
+(18, 11, 3, '2024-06-04 04:23:41'),
+(19, 3, 1, '2024-06-04 05:16:21');
 
 --
 -- Indexes for dumped tables
@@ -332,31 +340,31 @@ ALTER TABLE `back_users`
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `episodes`
 --
 ALTER TABLE `episodes`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `following`
 --
 ALTER TABLE `following`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `genres`
 --
 ALTER TABLE `genres`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `shows`
 --
 ALTER TABLE `shows`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -368,7 +376,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `views`
 --
 ALTER TABLE `views`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
